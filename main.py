@@ -53,13 +53,21 @@ def parsing(n):
                 print(f"Элемент не найден. Ошибка: {e}")      
         
 
-    o = Options()
-    o.headless = True
+    options = Options()
+    options.headless = True
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-background-networking')
+    options.add_argument('--disable-default-apps')
+    options.add_argument('--disable-extensions')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--headless')
+
     #Пути к актуальной версии вебдрайвера и гугл хром
     #o.binary_location = chrome_path
     service=webdriver.chrome.service.Service(webdriver_path) 
 
-    driver = webdriver.Chrome(service=service,options=o)
+    driver = webdriver.Chrome(service=service,options=options)
 
     try:
         driver.get(url)
