@@ -11,10 +11,10 @@ import certifi
 webdriver_path="D:/Python/scrap/chromedriver.exe"
 chrome_path="C:/Program Files (x86)/chrome-win64/chrome.exe"
 
-
-#Подключение к бд
-with open(certifi.where(), "r") as fh:
-    cert = fh.read()
+#Подключение к бд для windows
+#with open(certifi.where(), "r") as fh:
+#    cert = fh.read()
+#client = InfluxDBClient3(host=host, database=base, token=token, org=org, flight_client_options=flight_client_options(tls_root_certs=cert))
 
 token='qLjKZzGWdMA6KjJen3qrtn-_PejLsU0eIUdbQm4AjKiErgj1kc9Xl5gbtrPW9O3bIh7TwW-LYc_-pZzdTPXhFg=='
 org = "koeff"
@@ -22,8 +22,7 @@ host = "https://us-east-1-1.aws.cloud2.influxdata.com"
 
 base='new'
 
-client = InfluxDBClient3(host=host, database=base, token=token, org=org,
-                         flight_client_options=flight_client_options(tls_root_certs=cert))
+client = InfluxDBClient3(host=host, database=base, token=token, org=org)
 
 
 session_start_time=datetime.datetime.now()
