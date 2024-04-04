@@ -8,8 +8,8 @@ import uuid
 from influxdb_client_3 import InfluxDBClient3, Point, flight_client_options
 import certifi
 
-webdriver_path="D:/Python/scrap/chromedriver.exe"
-chrome_path="C:/Program Files (x86)/chrome-win64/chrome.exe"
+webdriver_path="/usr/local/bin/chromedriver"
+#chrome_path="C:/Program Files (x86)/chrome-win64/chrome.exe"
 
 #Подключение к бд для windows
 #with open(certifi.where(), "r") as fh:
@@ -56,7 +56,7 @@ def parsing(n):
     o = Options()
     o.headless = True
     #Пути к актуальной версии вебдрайвера и гугл хром
-    o.binary_location = chrome_path
+    #o.binary_location = chrome_path
     service=webdriver.chrome.service.Service(webdriver_path) 
 
     driver = webdriver.Chrome(service=service,options=o)
