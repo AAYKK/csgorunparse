@@ -1,0 +1,8 @@
+/.idea
+/chromedriver.exe
+/convertcsv.xlsx
+/data
+/main_parse.ipynb
+/model_fail.keras
+/model_sigmoid_fail.keras
+/new.ipynb
