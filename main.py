@@ -9,21 +9,6 @@ from influxdb_client_3 import InfluxDBClient3, Point, flight_client_options
 import certifi
 
 webdriver_path="/usr/local/bin/chromedriver"
-#chrome_path="C:/Program Files (x86)/chrome-win64/chrome.exe"
-
-#Подключение к бд для windows
-#with open(certifi.where(), "r") as fh:
-#    cert = fh.read()
-#client = InfluxDBClient3(host=host, database=base, token=token, org=org, flight_client_options=flight_client_options(tls_root_certs=cert))
-
-token='qLjKZzGWdMA6KjJen3qrtn-_PejLsU0eIUdbQm4AjKiErgj1kc9Xl5gbtrPW9O3bIh7TwW-LYc_-pZzdTPXhFg=='
-org = "koeff"
-host = "https://us-east-1-1.aws.cloud2.influxdata.com"
-
-base='new'
-
-client = InfluxDBClient3(host=host, database=base, token=token, org=org)
-
 
 session_start_time=datetime.datetime.now()
 
@@ -35,7 +20,7 @@ def parsing(n):
             try:
                 # Функция поиска даинамически появляющегося элемента
                 print(f"\nИщу элеммент") 
-                wait=WebDriverWait(driver, timeout=150).until(EC.text_to_be_present_in_element((By.CLASS_NAME,"timer__status"),'КРАШ'))
+                wait=WebDriverWait(driver, timeout=400).until(EC.text_to_be_present_in_element((By.CLASS_NAME,"timer__status"),'КРАШ'))
                 
                 value=float(driver.find_element(By.CLASS_NAME,"timer__timer").text.replace('x',''))
                 return_time=datetime.datetime.now()
@@ -46,7 +31,6 @@ def parsing(n):
                 client.write(record=point, time=return_time)
                 
                 print(f"№{i+1} Элемент найден \n{return_time}:{value,info}\n")
-                print(f"")
                 time.sleep(4)
                 
             except Exception as e:
@@ -68,7 +52,19 @@ def parsing(n):
     service=webdriver.chrome.service.Service(webdriver_path) 
 
     driver = webdriver.Chrome(service=service,options=options)
-
+    
+    try: 
+        token='qLjKZzGWdMA6KjJen3qrtn-_PejLsU0eIUdbQm4AjKiErgj1kc9Xl5gbtrPW9O3bIh7TwW-LYc_-pZzdTPXhFg=='
+        org = "koeff"
+        host = "https://us-east-1-1.aws.cloud2.influxdata.com"
+        
+        base='new'
+        
+        client = InfluxDBClient3(host=host, database=base, token=token, org=org)
+        print("Успешно подключено к бд!")
+    except:
+        print("Не подключено к бд!")
+        
     try:
         driver.get(url)
         time.sleep(0.2)
