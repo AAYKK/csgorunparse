@@ -58,7 +58,7 @@ def parsing(n):
         org = "koeff"
         host = "https://us-east-1-1.aws.cloud2.influxdata.com"
         
-        base='new'
+        base='main'
         
         client = InfluxDBClient3(host=host, database=base, token=token, org=org)
         print("Успешно подключено к бд!")
