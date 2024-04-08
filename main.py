@@ -80,4 +80,12 @@ def parsing(n):
     
     
 if __name__ == "__main__":
-    parsing(200)
+    if len(sys.argv) > 1:
+        n = sys.argv[1]
+        try:
+            n = int(n)
+            parsing(n)
+        except ValueError:
+            print("Аргумент должен быть целым числом.")
+    else:
+        print("Передайте аргумент в командной строке.")
