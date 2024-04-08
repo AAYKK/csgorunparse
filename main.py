@@ -7,6 +7,7 @@ import time, datetime
 import uuid
 from influxdb_client_3 import InfluxDBClient3, Point, flight_client_options
 import certifi
+import sys
 
 webdriver_path="/usr/local/bin/chromedriver"
 
