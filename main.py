@@ -14,7 +14,7 @@ webdriver_path="/usr/local/bin/chromedriver"
 session_start_time=datetime.datetime.now()
 
 def parsing(n):
-    url="https://2cs.fail/ru/crash"
+    url="https://3cs.fail/ru/crash"
 
     def parse(driver, iter_counts):
         for i in range(iter_counts):
