@@ -77,7 +77,7 @@ def parsing(n):
     except Exception as e:
         print('Не удалось подключиться!', e)
     
-    driver.quit()          
+    #driver.quit()          
     
     
 if __name__ == "__main__":
