@@ -35,7 +35,8 @@ def parsing(n):
                 time.sleep(4)
                 
             except Exception as e:
-                print(f"Элемент не найден. Ошибка: {e}")      
+                print(f"Элемент не найден. Ошибка: {e}")
+                driver.refresh()
         
 
     options = Options()
